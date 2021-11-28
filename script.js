@@ -115,6 +115,8 @@ const squareClick = (gameInfo, cardElement, column, row) => {
       cardElement.classList.add('card');
       cardElement.innerHTML = `${firstCard.suitSymbol}<BR>${firstCard.displayName}`;
   
+
+
       // hold onto this for later when it may not match
       firstCardElement = cardElement;
       gameInfo.innerHTML = `You opened ${firstCard.displayName} of ${firstCard.suitSymbol}. Click on another card and see if it matches!`;
@@ -133,12 +135,17 @@ const squareClick = (gameInfo, cardElement, column, row) => {
         // turn this card over
         cardElement.innerHTML = `${clickedCard.suitSymbol}<BR>${clickedCard.displayName}`;
         gameInfo.innerHTML = `You opened ${clickedCard.displayName} of ${clickedCard.suitSymbol}. It's a match!`;
+
+        setTimeout(() => {
+          gameInfo.innerHTML = '';
+        }, 3000);
       } else {
         console.log('NOT a match');
         // turn second card over
         cardElement.innerHTML = `${clickedCard.suitSymbol}<BR>${clickedCard.displayName}`;
         gameInfo.innerHTML = `Yikes, not a match m8. Click on another card to try again!`;
-    
+
+       
         // turn both cards over after 3 seconds
         setTimeout(() => {
           cardElement.innerHTML = '';
